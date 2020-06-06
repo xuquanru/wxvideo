@@ -1,0 +1,74 @@
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/xuvideo?serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  application:
+    name: wxvideo
+  redis:
+    database: 0
+    host: 120.25.172.195
+    port: 6379
+    password: Xuqr@2020
+    jedis:
+      pool:
+        #连接池最大限制数量，如果为负数那么没有限制
+        max-active: 1000
+        #连接池最大等待时间
+        max-wait: -1
+        #连接池最大空闲链接
+        max-idle: 10
+        #连接池最小空闲链接
+        min-idle: 2
+        #连接超时时间
+    timeout: 200
+    #设置文件大小
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://120.25.172.195:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.ip-address}:${server.port}
+    ip-address:  192.168.50.49
+    non-secure-port: ${server.port}
+
+#作者的配置
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
+
+
+#用户图片存放路径
+myfile:
+  path: D:/Xpro/file
+  bgmpath: D:/Xpro/bgm
+  ffmpeg: D:/QMDownload/ffmpeg/bin/ffmpeg.exe
+  logo: D:/Xpro/logo/logo.png
+  testmp3: D:/QMDownload/ffmpeg/bin/2.mp3
+  testmp4: D:/QMDownload/ffmpeg/bin/1.mp4
+  testout: D:/QMDownload/ffmpeg/bin/myhello.mp4
+logging:
+  level:
+    com.rootbant.wxapp.mapper: debug #打印sql
+

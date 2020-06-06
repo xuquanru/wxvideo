@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rootbant.wxapp.mapper.BgmEntityMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.rootbant.wxapp.entity.BgmEntity">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="author" property="author" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        author,
+        `name`,
+        `path`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="bgmEntity.id">
+        INSERT INTO bgm_entity (
+            id,
+            author,
+            `name`,
+            `path`
+        ) VALUES (
+            #{bgmEntity.id,jdbcType=VARCHAR},
+            #{bgmEntity.author,jdbcType=VARCHAR},
+            #{bgmEntity.name,jdbcType=VARCHAR},
+            #{bgmEntity.path,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="bgmEntity.id">
+        INSERT INTO bgm_entity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bgmEntity.id!=null"> id,</if>
+            <if test="bgmEntity.author!=null"> author,</if>
+            <if test="bgmEntity.name!=null"> `name`,</if>
+            <if test="bgmEntity.path!=null"> `path`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bgmEntity.id!=null">#{bgmEntity.id,jdbcType=VARCHAR},
+            </if>
+            <if test="bgmEntity.author!=null">#{bgmEntity.author,jdbcType=VARCHAR},
+            </if>
+            <if test="bgmEntity.name!=null">#{bgmEntity.name,jdbcType=VARCHAR},
+            </if>
+            <if test="bgmEntity.path!=null">#{bgmEntity.path,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO bgm_entity (
+            id,
+            author,
+            `name`,
+            `path`
+        )VALUES
+        <foreach collection="bgmEntitys" item="bgmEntity" index="index" separator=",">
+            (
+            #{bgmEntity.id,jdbcType=VARCHAR},
+            #{bgmEntity.author,jdbcType=VARCHAR},
+            #{bgmEntity.name,jdbcType=VARCHAR},
+            #{bgmEntity.path,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE bgm_entity
+        <set>
+            <if test="bgmEntity.author != null"> author= #{bgmEntity.author,jdbcType=VARCHAR},</if>
+            <if test="bgmEntity.name != null"> `name`= #{bgmEntity.name,jdbcType=VARCHAR},</if>
+            <if test="bgmEntity.path != null"> `path`= #{bgmEntity.path,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{bgmEntity.id,jdbcType=VARCHAR}
+    </update>
+    <select id="queryBgmList" resultMap="BaseResultMap">
+        select  * from bgm
+    </select>
+    <select id="queryBgmById" resultMap="BaseResultMap">
+        select * from bgm where id=#{bgmId,jdbcType=VARCHAR}
+    </select>
+</mapper>
+

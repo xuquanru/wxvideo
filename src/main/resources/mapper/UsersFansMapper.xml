@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rootbant.wxapp.mapper.UsersFansMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.rootbant.wxapp.entity.UsersFans">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="fan_id" property="fanId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        user_id,
+        fan_id
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="usersFans.id">
+        INSERT INTO users_fans (
+            id,
+            user_id,
+            fan_id
+        ) VALUES (
+            #{usersFans.id,jdbcType=VARCHAR},
+            #{usersFans.userId,jdbcType=VARCHAR},
+            #{usersFans.fanId,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="usersFans.id">
+        INSERT INTO users_fans
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="usersFans.id!=null"> id,</if>
+            <if test="usersFans.userId!=null"> user_id,</if>
+            <if test="usersFans.fanId!=null"> fan_id,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="usersFans.id!=null">#{usersFans.id,jdbcType=VARCHAR},
+            </if>
+            <if test="usersFans.userId!=null">#{usersFans.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="usersFans.fanId!=null">#{usersFans.fanId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO users_fans (
+            id,
+            user_id,
+            fan_id
+        )VALUES
+        <foreach collection="usersFanss" item="usersFans" index="index" separator=",">
+            (
+            #{usersFans.id,jdbcType=VARCHAR},
+            #{usersFans.userId,jdbcType=VARCHAR},
+            #{usersFans.fanId,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE users_fans
+        <set>
+            <if test="usersFans.userId != null"> user_id= #{usersFans.userId,jdbcType=VARCHAR},</if>
+            <if test="usersFans.fanId != null"> fan_id= #{usersFans.fanId,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{usersFans.id,jdbcType=VARCHAR}
+    </update>
+    <delete id="delete">
+        delete from users_fans where user_id=#{usersFans.userId,jdbcType=VARCHAR}
+                                 and fan_id=#{usersFans.fanId,jdbcType=VARCHAR}
+    </delete>
+    <select id="queryUserFans" resultMap="BaseResultMap">
+        select * from users_fans where fan_id=#{usersFans.fanId,jdbcType=VARCHAR}
+            and user_id=#{usersFans.userId,jdbcType=VARCHAR}
+    </select>
+</mapper>
+

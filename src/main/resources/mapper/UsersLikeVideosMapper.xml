@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rootbant.wxapp.mapper.UsersLikeVideosMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.rootbant.wxapp.entity.UsersLikeVideos">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="video_id" property="videoId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        user_id,
+        video_id
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="usersLikeVideos.id">
+        INSERT INTO users_like_videos (
+            id,
+            user_id,
+            video_id
+        ) VALUES (
+            #{usersLikeVideos.id,jdbcType=VARCHAR},
+            #{usersLikeVideos.userId,jdbcType=VARCHAR},
+            #{usersLikeVideos.videoId,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="usersLikeVideos.id">
+        INSERT INTO users_like_videos
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="usersLikeVideos.id!=null"> id,</if>
+            <if test="usersLikeVideos.userId!=null"> user_id,</if>
+            <if test="usersLikeVideos.videoId!=null"> video_id,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="usersLikeVideos.id!=null">#{usersLikeVideos.id,jdbcType=VARCHAR},
+            </if>
+            <if test="usersLikeVideos.userId!=null">#{usersLikeVideos.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="usersLikeVideos.videoId!=null">#{usersLikeVideos.videoId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO users_like_videos (
+            id,
+            user_id,
+            video_id
+        )VALUES
+        <foreach collection="usersLikeVideoss" item="usersLikeVideos" index="index" separator=",">
+            (
+            #{usersLikeVideos.id,jdbcType=VARCHAR},
+            #{usersLikeVideos.userId,jdbcType=VARCHAR},
+            #{usersLikeVideos.videoId,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE users_like_videos
+        <set>
+            <if test="usersLikeVideos.userId != null"> user_id= #{usersLikeVideos.userId,jdbcType=VARCHAR},</if>
+            <if test="usersLikeVideos.videoId != null"> video_id= #{usersLikeVideos.videoId,jdbcType=VARCHAR}</if>
+        </set>
+        WHERE id = #{usersLikeVideos.id,jdbcType=VARCHAR}
+    </update>
+    <delete id="delete">
+        delete from users_like_videos  where user_id=#{usersLikeVideos.userId,jdbcType=VARCHAR} and video_id=#{usersLikeVideos.videoId,jdbcType=VARCHAR}
+    </delete>
+    <select id="findUserLikeVideo" resultMap="BaseResultMap">
+        select * from users_like_videos where video_id=#{usersLikeVideos.videoId,jdbcType=VARCHAR}
+                and user_id=#{usersLikeVideos.userId,jdbcType=VARCHAR}
+    </select>
+    <select id="findUserLikeVideoByUserId" resultType="java.lang.String">
+        select video_id from users_like_videos where  user_id=#{userId,jdbcType=VARCHAR}
+    </select>
+</mapper>
+

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rootbant.wxapp.mapper.VideosMapper">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.rootbant.wxapp.entity.Videos">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="audio_id" property="audioId" jdbcType="VARCHAR"/>
+        <result column="video_desc" property="videoDesc" jdbcType="VARCHAR"/>
+        <result column="video_path" property="videoPath" jdbcType="VARCHAR"/>
+        <result column="video_seconds" property="videoSeconds" jdbcType="DOUBLE"/>
+        <result column="video_width" property="videoWidth" jdbcType="INTEGER"/>
+        <result column="video_height" property="videoHeight" jdbcType="INTEGER"/>
+        <result column="cover_path" property="coverPath" jdbcType="VARCHAR"/>
+        <result column="like_counts" property="likeCounts" jdbcType="BIGINT"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        user_id,
+        audio_id,
+        video_desc,
+        video_path,
+        video_seconds,
+        video_width,
+        video_height,
+        cover_path,
+        like_counts,
+        `status`,
+        create_time
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="videos.id">
+        INSERT INTO videos (
+            id,
+            user_id,
+            audio_id,
+            video_desc,
+            video_path,
+            video_seconds,
+            video_width,
+            video_height,
+            cover_path,
+            like_counts,
+            `status`,
+            create_time
+        ) VALUES (
+            #{videos.id,jdbcType=VARCHAR},
+            #{videos.userId,jdbcType=VARCHAR},
+            #{videos.audioId,jdbcType=VARCHAR},
+            #{videos.videoDesc,jdbcType=VARCHAR},
+            #{videos.videoPath,jdbcType=VARCHAR},
+            #{videos.videoSeconds,jdbcType=DOUBLE},
+            #{videos.videoWidth,jdbcType=INTEGER},
+            #{videos.videoHeight,jdbcType=INTEGER},
+            #{videos.coverPath,jdbcType=VARCHAR},
+            #{videos.likeCounts,jdbcType=BIGINT},
+            #{videos.status,jdbcType=INTEGER},
+            #{videos.createTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="videos.id">
+        INSERT INTO videos
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="videos.id!=null"> id,</if>
+            <if test="videos.userId!=null"> user_id,</if>
+            <if test="videos.audioId!=null"> audio_id,</if>
+            <if test="videos.videoDesc!=null"> video_desc,</if>
+            <if test="videos.videoPath!=null"> video_path,</if>
+            <if test="videos.videoSeconds!=null"> video_seconds,</if>
+            <if test="videos.videoWidth!=null"> video_width,</if>
+            <if test="videos.videoHeight!=null"> video_height,</if>
+            <if test="videos.coverPath!=null"> cover_path,</if>
+            <if test="videos.likeCounts!=null"> like_counts,</if>
+            <if test="videos.status!=null"> `status`,</if>
+            <if test="videos.createTime!=null"> create_time,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="videos.id!=null">#{videos.id,jdbcType=VARCHAR},
+            </if>
+            <if test="videos.userId!=null">#{videos.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="videos.audioId!=null">#{videos.audioId,jdbcType=VARCHAR},
+            </if>
+            <if test="videos.videoDesc!=null">#{videos.videoDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="videos.videoPath!=null">#{videos.videoPath,jdbcType=VARCHAR},
+            </if>
+            <if test="videos.videoSeconds!=null">#{videos.videoSeconds,jdbcType=DOUBLE},
+            </if>
+            <if test="videos.videoWidth!=null">#{videos.videoWidth,jdbcType=INTEGER},
+            </if>
+            <if test="videos.videoHeight!=null">#{videos.videoHeight,jdbcType=INTEGER},
+            </if>
+            <if test="videos.coverPath!=null">#{videos.coverPath,jdbcType=VARCHAR},
+            </if>
+            <if test="videos.likeCounts!=null">#{videos.likeCounts,jdbcType=BIGINT},
+            </if>
+            <if test="videos.status!=null">#{videos.status,jdbcType=INTEGER},
+            </if>
+            <if test="videos.createTime!=null">#{videos.createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO videos (
+            id,
+            user_id,
+            audio_id,
+            video_desc,
+            video_path,
+            video_seconds,
+            video_width,
+            video_height,
+            cover_path,
+            like_counts,
+            `status`,
+            create_time
+        )VALUES
+        <foreach collection="videoss" item="videos" index="index" separator=",">
+            (
+            #{videos.id,jdbcType=VARCHAR},
+            #{videos.userId,jdbcType=VARCHAR},
+            #{videos.audioId,jdbcType=VARCHAR},
+            #{videos.videoDesc,jdbcType=VARCHAR},
+            #{videos.videoPath,jdbcType=VARCHAR},
+            #{videos.videoSeconds,jdbcType=DOUBLE},
+            #{videos.videoWidth,jdbcType=INTEGER},
+            #{videos.videoHeight,jdbcType=INTEGER},
+            #{videos.coverPath,jdbcType=VARCHAR},
+            #{videos.likeCounts,jdbcType=BIGINT},
+            #{videos.status,jdbcType=INTEGER},
+            #{videos.createTime,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateByPrimaryKeySelective">
+        UPDATE videos
+        <set>
+            <if test="videos.userId != null"> user_id= #{videos.userId,jdbcType=VARCHAR},</if>
+            <if test="videos.audioId != null"> audio_id= #{videos.audioId,jdbcType=VARCHAR},</if>
+            <if test="videos.videoDesc != null"> video_desc= #{videos.videoDesc,jdbcType=VARCHAR},</if>
+            <if test="videos.videoPath != null"> video_path= #{videos.videoPath,jdbcType=VARCHAR},</if>
+            <if test="videos.videoSeconds != null"> video_seconds= #{videos.videoSeconds,jdbcType=DOUBLE},</if>
+            <if test="videos.videoWidth != null"> video_width= #{videos.videoWidth,jdbcType=INTEGER},</if>
+            <if test="videos.videoHeight != null"> video_height= #{videos.videoHeight,jdbcType=INTEGER},</if>
+            <if test="videos.coverPath != null"> cover_path= #{videos.coverPath,jdbcType=VARCHAR},</if>
+            <if test="videos.likeCounts != null"> like_counts= #{videos.likeCounts,jdbcType=BIGINT},</if>
+            <if test="videos.status != null"> `status`= #{videos.status,jdbcType=INTEGER},</if>
+            <if test="videos.createTime != null"> create_time= #{videos.createTime,jdbcType=TIMESTAMP}</if>
+        </set>
+        WHERE id = #{videos.id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateVideo">
+        update videos set  cover_path=#{uploadPathDB,jdbcType=VARCHAR}  where id=#{videoId,jdbcType=VARCHAR}
+    </update>
+    <select id="getAllVideos" resultType="com.rootbant.wxapp.vo.VideosVo">
+        SELECT v.id as id,
+               v.cover_path as coverPath,
+               u.face_image as faceImage,
+               u.nickname as nickName,
+               v.video_width as videoWidth,
+               v.video_height as videoHeight,
+               v.video_path as videoPath
+        from videos v  LEFT JOIN users u on v.user_id =u.id
+        <where>
+            <if test="desc != null and desc != ''">
+                v.video_desc like concat("%",#{desc,jdbcType=VARCHAR} ,"%")
+            </if>
+            <if test="desc != null and desc != ''">
+                or u.username like concat("%",#{desc,jdbcType=VARCHAR} ,"%")
+            </if>
+        </where>
+        order by v.create_time desc
+    </select>
+    <select id="getHotwords" resultType="java.lang.String">
+        SELECT content from search_records GROUP BY content  ORDER BY COUNT(content) desc
+    </select>
+    <select id="showVideo" resultType="com.rootbant.wxapp.vo.MyPublishVideoVo">
+        select v.id,
+               v.video_path as videoPath,
+               v.video_width as videoWidth,
+               v.video_height as videoHeight,
+               v.video_desc as videoDesc,
+               v.cover_path as videoCoverPath,
+               u.id as publisherId,
+               u.face_image as publisherFace,
+               u.nickname as publisherNickname
+        from videos v left join  users u on v.user_id=u.id
+        <where>
+            <if test="desc != null and desc != ''">
+                v.video_desc like concat("%",#{desc,jdbcType=VARCHAR} ,"%")
+            </if>
+            <if test="desc != null and desc != ''">
+                or u.username like concat("%",#{desc,jdbcType=VARCHAR} ,"%")
+            </if>
+        </where>
+        order by v.create_time desc
+
+    </select>
+</mapper>
+
